@@ -1,0 +1,12 @@
+| Test Case ID | Test Scenario | Test Steps | Test Data	| Expected Results| Actual Results|Pass/Fail|
+| ------ | ------ | ------ | ------ | ------ | ------ | ------ |
+| TU01 | Check registrations | 1.Go to site shop.by 2. enter phone number and get sms code | PhoneNumber=+375297653***| Get code for registrations and temporary password| As expected| Pass|
+| TU02 | Check Registrations Login with invalid Data | 1.Go to site shop.by 2. enter invalid phone number| PhoneNumber=+375297653| Error message: "Укажите номер телефона"| As expected| Pass|
+| TU03 |Check Customer Login with valid Data  | 1.Go to site shop.by 2.Enter PhoneNumber 3.Enter Password 4. Click "Войти"| Phone number=+375297653*** Password afafqeqe | User should Login into an application| As expected| Pass|
+| TU04 | Check Customer Login with invalid Data | 1.Go to site shop.by 2.Enter PhoneNumber 3.Enter Password 4. Click "Войти"| Phone number=+375297653*** Password qeqeafaf| User should not Login into an application and get Error message"Неверный пароль"| As expected| Pass|
+| TU05 | Check for customer personal data editing  | 1.Go to site shop.by 2.Login  3. Click "Настройки" 4. Enter new Username| Username=Superman| Data changed| As expected| Pass|
+| TU06 | Check result search line with valid data| 1.Go to site shop.by 2.Login  3. write search term | search term = Велосипед| Search result is displayed| As expected| Pass|
+| TU07 |  Check result search line with invalid data| 1.Go to site shop.by 2.Login  3. write search term | search term = фаффафаф| Search result is not displayed| As expected| Pass|
+| TU08 |  Check ability to go to the seller's website| 1.Go to site shop.by 2.Login  3. choose product 4. click "В магазин"  | product https://shop.by/telefony_mobilnye/apple_iphone_11_64gb_black/#reviews | go to the seller's website| As expected| Pass|
+| TU09 |  ability to apply filters to search for products| 1.Go to site shop.by 2.Login  3. choose section 4. select a filter 5.Click "Посмотреть"  | product section =https://shop.by/velosipedy/    Filters: Производитель: Stels Тип: Горный | The user should see products with the selected filters| As expected| Pass|
+| TU10 |  adding a product to your favorites| 1.Go to site shop.by 2.Login  3. choose product 4. Click icon heart"В избранное"  | product =https://shop.by/velosipedy/stream_alina_28_2020/#desc    | The product the product must be added to favorites| As expected| Pass|
