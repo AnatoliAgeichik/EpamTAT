@@ -1,8 +1,10 @@
-import Planes.ExperimentalPlane;
-import models.MilitaryType;
-import Planes.MilitaryPlane;
-import Planes.PassengerPlane;
-import Planes.Plane;
+package entity.airport;
+
+import entity.plane.ExperimentalPlane;
+import entity.type.MilitaryType;
+import entity.plane.MilitaryPlane;
+import entity.plane.PassengerPlane;
+import entity.plane.Plane;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -33,13 +35,13 @@ public class Airport {
 
     public List<MilitaryPlane> getTransportMilitaryPlanes() {
         return getMilitaryPlanes().stream()
-                .filter(militaryPlane -> militaryPlane.getType().equals(MilitaryType.TRANSPORT))
+                .filter(militaryPlane -> militaryPlane.getMilitaryType().equals(MilitaryType.TRANSPORT))
                 .collect(Collectors.toList());
     }
 
     public List<MilitaryPlane> getBomberMilitaryPlanes() {
         return getMilitaryPlanes().stream()
-                .filter(militaryPlane -> militaryPlane.getType().equals(MilitaryType.BOMBER))
+                .filter(militaryPlane -> militaryPlane.getMilitaryType().equals(MilitaryType.BOMBER))
                 .collect(Collectors.toList());
     }
 
@@ -77,7 +79,7 @@ public class Airport {
 
     @Override
     public String toString() {
-        return "Airport{" +
+        return "entity.airport.Airport{" +
                 "Planes=" + planes.toString() +
                 '}';
     }

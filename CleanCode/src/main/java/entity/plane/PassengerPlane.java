@@ -1,9 +1,8 @@
-package Planes;
+package entity.plane;
 
 import java.util.Objects;
 
 public class PassengerPlane extends Plane{
-
     private int passengersCapacity;
 
     public PassengerPlane(String model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity, int passengersCapacity) {
