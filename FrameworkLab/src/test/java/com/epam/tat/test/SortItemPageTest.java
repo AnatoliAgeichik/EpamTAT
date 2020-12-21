@@ -20,9 +20,7 @@ public class SortItemPageTest extends CommonCondition {
         boolean flag=true;
 
         for (int i=1;i<productsPrice.size();++i){
-            System.out.println(productsPrice.get(i).getText());
-
-            if(IntegerUtil.parsePrice(productsPrice.get(i).getText()) < IntegerUtil.parsePrice(productsPrice.get(i - 1).getText())){
+           if(IntegerUtil.parsePrice(productsPrice.get(i).getText()) < IntegerUtil.parsePrice(productsPrice.get(i - 1).getText())){
                 flag=false;
             }
         }
@@ -39,7 +37,7 @@ public class SortItemPageTest extends CommonCondition {
         boolean flag=true;
 
         for (int i=1;i<productsPrice.size();++i){
-            System.out.println(productsPrice.get(i).getText());
+
 
             if(IntegerUtil.parsePrice(productsPrice.get(i).getText()) > IntegerUtil.parsePrice(productsPrice.get(i - 1).getText())){
                 flag=false;
@@ -57,7 +55,6 @@ public class SortItemPageTest extends CommonCondition {
         boolean flag=true;
 
         for (int i=1;i<productsPrice.size();++i){
-            System.out.println(productsPrice.get(i).getText());
             if(productsPrice.get(i).getText().equals("")){
                 i++;
                 continue;
