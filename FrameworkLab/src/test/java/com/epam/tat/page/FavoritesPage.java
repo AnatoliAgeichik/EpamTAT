@@ -8,6 +8,7 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -24,16 +25,27 @@ public class FavoritesPage extends AbstractPage {
     @FindBy(xpath = "//div[@class=\"delete-button\"]")
     private WebElement deleteButton;
 
+    @FindBy(xpath = "//h2[@class=\"favourites-title PageAutn__Title\"]")
+    private WebElement headerFavoritePage;
+
 
     protected FavoritesPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(this.driver,this);
     }
 
     public FavoritesPage deleteProduct(){
+        CustomWait.waitForPageLoaded(driver);
         deleteButton.click();
         CustomWait.waitForPageLoaded(driver);
         return this;
     }
+
+    public String getHeader(){
+        return headerFavoritePage.getText();
+    }
+
+
 
     public Boolean isProductOnPage(String name){
         productList=  driver.findElements(By.id("favourites-content"));

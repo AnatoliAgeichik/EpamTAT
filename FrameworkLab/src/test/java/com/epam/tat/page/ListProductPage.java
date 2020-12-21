@@ -61,22 +61,17 @@ public class ListProductPage extends AbstractPage {
     }
 
     public ListProductPage sortCheapPrice(){
-        //CustomWait.waitForPageLoaded(driver);
-     //   ((JavascriptExecutor) driver).executeScript("arguments[0].click()",choosingTypeSort);
        getClickableElement(choosingTypeSort).click();
         chooseSortCheapButton.click();
-        //CustomWait.waitForPageLoaded(driver);
         return this;
     }
     public ListProductPage sortExpencivePrice(){
-        //choosingTypeSort.click();
         getClickableElement(choosingTypeSort).click();
         chooseSortExpenciveButton.click();
-        //CustomWait.waitForPageLoaded(driver);
         return this;
     }
     public ListProductPage sortPopular(){
-        //choosingTypeSort.click();
+
         CustomWait.waitForPageLoaded(driver);
         getClickableElement(choosingTypeSort).click();
         chooseSortPopularButton.click();

@@ -25,6 +25,19 @@ public class ActionsWithProductTests extends CommonCondition {
                 .isProductOnPage(product.getName()));
     }
 
+    @Test
+    public void deleteFromFavoritesTest(){
+        String expected="Список избранного пуст";
+        Assert.assertEquals(
+                new ProductPage(driver, product.getUrl())
+                        .openPage()
+                .addToFavorite()
+
+                .openFavoritePage()
+                .deleteProduct()
+                .getHeader(),expected);
+    }
+
 
 
     @Test

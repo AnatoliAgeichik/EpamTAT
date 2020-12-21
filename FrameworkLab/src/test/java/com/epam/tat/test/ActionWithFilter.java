@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 public class ActionWithFilter extends CommonCondition {
     @Test
     public void applyedFilterTest(){
+        String expectedDataModel="409224";
         Assert.assertTrue(new FilterPage(driver).openPage()
                 .setSteelModel()
                 .setWomenType()
@@ -14,7 +15,7 @@ public class ActionWithFilter extends CommonCondition {
                 .setSteelMaterial()
                 .setTwoSides()
                 .appledFilter()
-                .isProductOnPage("409224"));
+                .isProductOnPage(expectedDataModel));
 
     }
 }

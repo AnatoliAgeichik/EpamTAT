@@ -1,6 +1,7 @@
 package com.epam.tat.page;
 
 import com.epam.tat.model.User;
+import com.epam.tat.wait.CustomWait;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -26,16 +27,19 @@ public class MainPage extends AbstractPage {
     @FindBy(id = "email-tab")
     private WebElement linkEmailSignIn;
 
-    //@FindBy(id = "LLoginForm_phone")
     private final By  inputPhone=By.id("LLoginForm_phone");
 
-    //@FindBy(id = "LLoginForm_password")
+
     private final By inputPassword=By.id("LLoginForm_password");
 
-    //@FindBy(xpath = "/html/body/div[9]/div[2]/div/div[2]/form/div[1]/input")
+
     private final By signInButton=By.xpath("//*[@class=\"Page__ActiveButtonBg Header__ButtonLogIn\"]");
 
-    private final By divName=By.className("menu-name");
+    @FindBy(className = "menu-name")
+    private WebElement divName;
+
+    @FindBy(xpath = "//div[@class=\"Header__BlockLinkOffice header-photo-wrapper Header__LinkShowWapper\"]")
+    private WebElement headerPhotoButton;
 
     private final Logger logger = LogManager.getRootLogger();
     public MainPage(WebDriver driver){
@@ -48,32 +52,17 @@ public class MainPage extends AbstractPage {
     }
 
     public MainPage openSignInWindow(){
-        //try {
+
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
             getSignInFormButton().click();
             logger.info("click");
-            //getSignInFormButton().click();
-
-//            new WebDriverWait(driver,WAIT_TIMEOUT_SECONDS)
-//                    .until(ExpectedConditions.attributeToBe(By.xpath("/html/body/div[9]"),"display","flex"));
-//        }catch (TimeoutException exp){
-//            logger.info("exception");
-//            getSignInFormButton().click();
-//
-//        }
-        //getSignInFormButton().click();
-        //getSignInFormButton().click();
-        //linkEmailSignIn.click();
         return this;
     }
     public MainPage signIn(User user)
     {
         getClickableElement(inputPhone).sendKeys(user.getPhone());
-        //getPhoneInput().sendKeys(user.getPhone());
-        //getPasswordInput().sendKeys(user.getPassword());
         getClickableElement(inputPassword).sendKeys(user.getPassword());
         getClickableElement(signInButton).click();
-        //getInputBtn().click();
         logger.info("signIn performed");
         return new MainPage(driver);
     }
@@ -91,9 +80,9 @@ public class MainPage extends AbstractPage {
     }
 
     public String getUserName(){
-        WebElement name=new WebDriverWait(driver,WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.presenceOfElementLocated(divName));
-        return name.getText();
+        CustomWait.waitForPageLoaded(driver);
+        headerPhotoButton.click();
+        return divName.getText();
     }
     public WebElement getSignInFormButton(){
         return new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)

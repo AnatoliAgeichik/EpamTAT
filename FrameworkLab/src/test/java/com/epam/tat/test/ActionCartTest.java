@@ -23,7 +23,20 @@ public class ActionCartTest extends CommonCondition {
              ) {
             System.out.println(item.getText());
         }
-        Assert.assertTrue(productsInCart.stream().anyMatch(x-> x.getText().equals(product.getName())));
+        Assert.assertTrue(productsInCart.stream().anyMatch(x-> x.getText().equals("Смартфон Samsung Galaxy S10 8Gb/128Gb Blue (SM-G973F/DS)")));
     }
+
+    @Test
+    public void deleteFromCart(){
+        String expected="Ваша корзина пуста";
+        Assert.assertEquals(new ProductPage(driver,product.getUrl())
+                .openPage()
+                .addToCart()
+                .openCartPage()
+                .deleteProduct()
+                .getHeaderCart(),expected);
+    }
+
+
 
 }
